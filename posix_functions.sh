@@ -1,9 +1,12 @@
 #!/bin/bash
+# THIS SCRIPT SETS TWO GLOBAL VARIABLES:
+# START_DIR
+# SCRIPT_DIR
 
 #$1 = submoduleDirectory
 #$2 = binaryDestinationDir
 function buildSubmoduleAndCopyBinariesToTheDestinationIfItExists() {
-	SUBMODULE_DIR="${SCRIPT_DIR}/$1"
+	local SUBMODULE_DIR="${SCRIPT_DIR}/$1"
 	if [[ -d ${SUBMODULE_DIR} ]]; then
 		echo "Changing directory to \"${SUBMODULE_DIR}\""
 		cd "${SUBMODULE_DIR}" || exit 1
@@ -48,7 +51,7 @@ function doesFileIncludeAString() {
 	if [[ ! -f $2 ]]; then
 		return 1 # false
 	fi
-	STRING=$(grep "$1" "$2")
+	local STRING=$(grep "$1" "$2")
 	if [[ -z ${STRING} ]]; then
 		return 1 # false
 	fi
@@ -83,6 +86,7 @@ function extractFileIfExists() {
 }
 
 function setStartDirectoryAndScriptDirectory() {
+	# THESE TWO VARIABLES ARE GLOBAL
 	START_DIR=$(pwd)
 	SCRIPT_DIR=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
 	echo "Start directory: ${START_DIR}"
@@ -96,3 +100,4 @@ function setStartDirectoryAndScriptDirectory() {
 # commands, and 'arithmetic for' commands and their arguments or associated word
 # lists after they are expanded and before they are executed.
 set -x
+setStartDirectoryAndScriptDirectory();
