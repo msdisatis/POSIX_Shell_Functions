@@ -75,7 +75,8 @@ function downloadFileIfDoesNotExist() {
 function extractFileIfExists() {
 	if [[ -f $1 ]]; then
 		echo "Extracting \"$1\" to \"$3\""
-		tar --directory="$3" --extract --file="$1" --strip-components="$2" --verbose
+		tar --directory="$3" --extract --file="$1" --strip-components="$2" \
+			--verbose
 	else
 		echo "Error: Extracting \"$1\" to \"$3\" failed."
 	fi
@@ -87,5 +88,11 @@ function setStartDirectoryAndScriptDirectory() {
 	echo "Start directory: ${START_DIR}"
 	echo "Script directory: ${SCRIPT_DIR}"
 	echo "Script directory contents:"
-	ls --almost-all -c --classify --group-directories-first --human-readable --inode -l "${SCRIPT_DIR}"
+	ls --almost-all -c --classify --group-directories-first --human-readable \
+		--inode -l "${SCRIPT_DIR}"
 }
+
+# Print a trace of simple commands, 'for' commands, 'case' commands, 'select'
+# commands, and 'arithmetic for' commands and their arguments or associated word
+# lists after they are expanded and before they are executed.
+set -x
