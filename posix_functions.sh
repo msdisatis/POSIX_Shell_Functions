@@ -3,6 +3,9 @@
 # START_DIR
 # SCRIPT_DIR
 
+# This function assumes that the binary files are built in the 'bin' sub
+# directory and the configuration files are in the 'configuration' sub
+# directory.
 #$1 = submoduleDirectory
 #$2 = binaryDestinationDir
 function buildSubmoduleAndCopyBinariesToTheDestinationIfItExists() {
@@ -13,6 +16,7 @@ function buildSubmoduleAndCopyBinariesToTheDestinationIfItExists() {
 		pwd
 		make build
 		cp --recursive --verbose bin/ "$2"
+		cp --recursive --verbose configuration/ "$2"
 		cd "${SCRIPT_DIR}" || exit 1
 		pwd
 	else
@@ -51,7 +55,8 @@ function doesFileIncludeAString() {
 	if [[ ! -f $2 ]]; then
 		return 1 # false
 	fi
-	local STRING=$(grep "$1" "$2")
+	local STRING
+	STRING=$(grep "$1" "$2")
 	if [[ -z ${STRING} ]]; then
 		return 1 # false
 	fi
@@ -100,4 +105,4 @@ function setStartDirectoryAndScriptDirectory() {
 # commands, and 'arithmetic for' commands and their arguments or associated word
 # lists after they are expanded and before they are executed.
 set -x
-setStartDirectoryAndScriptDirectory();
+setStartDirectoryAndScriptDirectory
