@@ -108,4 +108,4 @@ function extractFileIfExists() {
 #		--inode -l "${SCRIPT_DIR}"
 #}
 #setStartDirectoryAndScriptDirectory
-#. ${SCRIPT_DIR}/POSIX_Shell_Functions/posix_functions.sh
+#. "${SCRIPT_DIR}/POSIX_Shell_Functions/posix_functions.sh"
