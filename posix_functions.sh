@@ -1,4 +1,6 @@
 #!/bin/bash
+# This script is meant to be sourced.
+
 # THIS SCRIPT SETS TWO GLOBAL VARIABLES:
 # START_DIR
 # SCRIPT_DIR
@@ -90,19 +92,20 @@ function extractFileIfExists() {
 	fi
 }
 
-function setStartDirectoryAndScriptDirectory() {
-	# THESE TWO VARIABLES ARE GLOBAL
-	START_DIR=$(pwd)
-	SCRIPT_DIR=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
-	echo "Start directory: ${START_DIR}"
-	echo "Script directory: ${SCRIPT_DIR}"
-	echo "Script directory contents:"
-	ls --almost-all -c --classify --group-directories-first --human-readable \
-		--inode -l "${SCRIPT_DIR}"
-}
-
 # Print a trace of simple commands, 'for' commands, 'case' commands, 'select'
 # commands, and 'arithmetic for' commands and their arguments or associated word
 # lists after they are expanded and before they are executed.
-set -x
-setStartDirectoryAndScriptDirectory
+#set -x
+
+#function setStartDirectoryAndScriptDirectory() {
+#	# THESE TWO VARIABLES ARE GLOBAL
+#	START_DIR=$(pwd)
+#	SCRIPT_DIR=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
+#	echo "Start directory: ${START_DIR}"
+#	echo "Script directory: ${SCRIPT_DIR}"
+#	echo "Script directory contents:"
+#	ls --almost-all -c --classify --group-directories-first --human-readable \
+#		--inode -l "${SCRIPT_DIR}"
+#}
+#setStartDirectoryAndScriptDirectory
+#. ${SCRIPT_DIR}/POSIX_Shell_Functions/posix_functions.sh
