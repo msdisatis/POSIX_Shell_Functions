@@ -96,9 +96,9 @@ function extractFileIfExists() {
 
 # Sourcing how to:
 
-# FOLLOWING METHOD SETS TWO GLOBAL VARIABLES:
-# START_DIR
-# SCRIPT_DIR
+## FOLLOWING METHOD SETS TWO GLOBAL VARIABLES:
+## START_DIR
+## SCRIPT_DIR
 #function setStartDirectoryAndScriptDirectory() {
 #	# THESE TWO VARIABLES ARE GLOBAL
 #	START_DIR=$(pwd)
