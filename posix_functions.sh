@@ -1,9 +1,6 @@
 #!/bin/bash
-# This script is meant to be sourced.
-
-# THIS SCRIPT SETS TWO GLOBAL VARIABLES:
-# START_DIR
-# SCRIPT_DIR
+# This script is meant to be sourced. Check the tail of the file to see how you
+# should source it.
 
 # This function assumes that the binary files are built in the 'bin' sub
 # directory and the configuration files are in the 'configuration' sub
@@ -97,6 +94,11 @@ function extractFileIfExists() {
 # lists after they are expanded and before they are executed.
 #set -x
 
+# Sourcing how to:
+
+# FOLLOWING METHOD SETS TWO GLOBAL VARIABLES:
+# START_DIR
+# SCRIPT_DIR
 #function setStartDirectoryAndScriptDirectory() {
 #	# THESE TWO VARIABLES ARE GLOBAL
 #	START_DIR=$(pwd)
