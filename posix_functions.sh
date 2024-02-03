@@ -69,7 +69,7 @@ function downloadFileIfDoesNotExist() {
 	if [[ -f $1 ]]; then
 		echo "File already exists. Skipping download \"$1\"."
 	else
-		wget -O "$1" "$3"
+		wget --output-document="$1" "$3"
 		if $2; then
 			chmod +x --verbose "$1"
 		fi
